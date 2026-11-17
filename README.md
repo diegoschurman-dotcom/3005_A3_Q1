@@ -7,3 +7,4 @@
 3. Open the terminal and run student_app.py
 
 https://youtu.be/hrRx92qkU54
+Note: code was changed to prompt for password on start, otherwise is the same
