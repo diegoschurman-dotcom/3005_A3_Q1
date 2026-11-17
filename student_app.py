@@ -1,5 +1,10 @@
 
 import psycopg2
+import getpass
+
+
+# Prompt for PostgreSQL password once at startup
+password = getpass.getpass("Enter PostgreSQL password: ")
 
 
 # Connect to the PostgreSQL database
@@ -8,11 +13,11 @@ def connect():
         host="localhost",
         database="student_db",
         user="postgres",
-        password="CMcRae1998"
+        password=password
     )
 
 
-#Retrieve and display all students
+# 1. Retrieve and display all students
 def getAllStudents():
     conn = connect()
     cur = conn.cursor()
@@ -28,7 +33,7 @@ def getAllStudents():
     conn.close()
 
 
-#Add a new student
+# 2. Add a new student
 def addStudent(first_name, last_name, email, enrollment_date):
     conn = connect()
     cur = conn.cursor()
@@ -50,7 +55,7 @@ def addStudent(first_name, last_name, email, enrollment_date):
     conn.close()
 
 
-#Update a students email
+# 3. Update a student's email
 def updateStudentEmail(student_id, new_email):
     conn = connect()
     cur = conn.cursor()
@@ -75,7 +80,7 @@ def updateStudentEmail(student_id, new_email):
     conn.close()
 
 
-#Delete a student
+# 4. Delete a student
 def deleteStudent(student_id):
     conn = connect()
     cur = conn.cursor()
@@ -96,7 +101,7 @@ def deleteStudent(student_id):
     conn.close()
 
 
-#Main application menu
+# Main application menu
 def main():
     while True:
         print("\n--- Student Database Application ---")
